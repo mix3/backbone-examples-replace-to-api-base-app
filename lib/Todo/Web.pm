@@ -25,13 +25,7 @@ sub prejsons {
 	my ($app, $rows) = @_;
 	my @ret = ();
 	for my $row (@$rows) {
-		push @ret, {
-			id    => $row->{id},
-			title => $row->{title},
-			done  => $row->{done} ?
-				Types::Serialiser::true  :
-				Types::Serialiser::false ,
-		};
+		push @ret, $app->perjson($row);
 	}
 	return \@ret;
 }
